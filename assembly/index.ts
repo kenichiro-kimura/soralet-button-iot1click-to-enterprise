@@ -83,7 +83,7 @@ export function uplink(): i32 {
 
   // set output JSON. Note that we have to wrap result with {}
   setOutputJSON("{" + encoder.toString() + "}");
-
+  log(encoder.toString());
   // return user defined result code for success
   return 0;
 }
