@@ -28,7 +28,7 @@ export function uplink(): i32 {
   const batteryLevel_int = data.getInteger("batteryLevel");
   const batteryLevel_int_number = batteryLevel_int === null ? 0 : batteryLevel_int.valueOf();
 
-  let remainingLife : f64 = batteryLevel === null ? batteryLevel_int_number * 100 : batteryLevel_number * 100;
+  const remainingLife: f64 = batteryLevel === null ? 100.0 : batteryLevel_number * 100.0;
 
   // get tag value
 
