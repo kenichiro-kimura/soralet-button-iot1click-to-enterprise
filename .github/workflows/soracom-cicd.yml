@@ -43,7 +43,7 @@ jobs:
         with:
           name: soracom-orbit
       - name: upload
-        uses: kenichiro-kimura/action-soracom-upload-soralet@1.1.0
+        uses: kenichiro-kimura/action-soracom-upload-soralet@1.2.0
         id: deploy
         if: github.ref == 'refs/heads/master'
         with:
