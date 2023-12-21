@@ -29,41 +29,15 @@ export function uplink(): i32 {
   const batteryLevel_int_number = batteryLevel_int === null ? 0 : batteryLevel_int.valueOf();
 
   const remainingLife: f64 = batteryLevel === null ? 100.0 : batteryLevel_number * 100.0;
-
+  log("remainingLife: " + batteryLevel_int?.toString());
   // get tag value
 
   const tag_user = getTagValue("user");
   const tag_token = getTagValue("token");
-  const tag_dsn = getTagValue("dsn");
-/*  
-{
-  "deviceInfo": {
-    "deviceId": "XXXXXXXXXXXXXXXX",
-    "type": "button",
-    "remainingLife": 99.933334,
-    "attributes": {
-      "projectRegion": "ap-northeast-1",
-      "projectName": "projectName",
-      "placementName": "placementName",
-      "deviceTemplateName": "deviceTemplateName"
-    }
-  },
-  "deviceEvent": {
-    "buttonClicked": {
-      "clickType": "SINGLE",
-      "reportedTime": "2018-11-05T04:29:01.950Z"
-    }
-  },
-  "placementInfo": {
-    "projectName": "projectName",
-    "placementName": "ButtonName",
-    "attributes": {},
-    "devices": {
-      "deviceTemplateName": "XXXXXXXXXXXXXXXX"
-    }
-  }
-}
-*/
+  const tag_dsn = getTagValue("DSN");
+
+  // setup output JSON
+
   encoder.pushObject("deviceInfo");
   encoder.setString("deviceId",tag_dsn);
   encoder.setString("type","button");
