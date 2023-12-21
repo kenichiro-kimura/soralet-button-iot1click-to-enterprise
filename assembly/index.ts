@@ -73,6 +73,7 @@ export function uplink(): i32 {
   encoder.setString("clickType",clickTypeName_string);
   encoder.setString("reportedTime",(new Date(getTimestamp())).toISOString());
   encoder.popObject();
+  encoder.popObject();
 
   encoder.pushObject("placementInfo");
   encoder.pushObject("attributes");
