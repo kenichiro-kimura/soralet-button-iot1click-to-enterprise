@@ -25,8 +25,6 @@ export function uplink(): i32 {
   const clickTypeName_string = clickTypeName === null ? "" : clickTypeName.valueOf();
   const batteryLevel = data.getFloat("batteryLevel");
   const batteryLevel_number = batteryLevel === null ? 0.0 : batteryLevel.valueOf();
-  const batteryLevel_int = data.getInteger("batteryLevel");
-  const batteryLevel_int_number = batteryLevel_int === null ? 0 : batteryLevel_int.valueOf();
 
   const remainingLife: f64 = batteryLevel === null ? 100.0 : batteryLevel_number * 100.0;
   
