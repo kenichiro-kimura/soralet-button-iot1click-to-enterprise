@@ -30,10 +30,6 @@ export function uplink(): i32 {
 
   const remainingLife: f64 = batteryLevel === null ? 100.0 : batteryLevel_number * 100.0;
   
-  if (batteryLevel !== null) {
-    log("remainingLife is : " + batteryLevel.toString());
-  }
-  
   // get tag value
 
   const tag_user = getTagValue("user");
@@ -64,7 +60,7 @@ export function uplink(): i32 {
 
   // set output JSON. Note that we have to wrap result with {}
   setOutputJSON("{" + encoder.toString() + "}");
-  log(encoder.toString());
+
   // return user defined result code for success
   return 0;
 }
