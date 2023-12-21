@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  COVERAGE: g
+  COVERAGE: jp
 
 jobs:
   build-and-test:
@@ -42,7 +42,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: soracom-orbit
-      - name: deploy
+      - name: upload
         uses: kenichiro-kimura/action-soracom-upload-soralet@1.1.0
         id: deploy
         if: github.ref == 'refs/heads/master'
@@ -50,27 +50,17 @@ jobs:
           soracom_auth_key: ${{ secrets.AUTH_KEY }}
           soracom_auth_key_id: ${{ secrets.AUTH_KEY_ID}}
           soracom_coverage: ${{ env.COVERAGE }}
-          soracom_soralet_id: button-global-to-japan
+          soracom_soralet_id: button-enterprise-to-iot1click
           soracom_soralet_filename: soralet-optimized.wasm
           soracom_delete_old_soralet: true
-      - name: deploy-staging
-        uses: kenichiro-kimura/action-soracom-upload-soralet@1.1.0
-        id: deploy-staging
-        if: github.ref == 'refs/heads/staging'
+      - name: deploy production
+        uses: kenichiro-kimura/action-soracom-configure-orbit@1.1.0
+        if: github.ref == 'refs/heads/master'
         with:
           soracom_auth_key: ${{ secrets.AUTH_KEY }}
           soracom_auth_key_id: ${{ secrets.AUTH_KEY_ID}}
           soracom_coverage: ${{ env.COVERAGE }}
-          soracom_soralet_id: button-global-to-japan-stg
-          soracom_soralet_filename: soralet-optimized.wasm
-          soracom_delete_old_soralet: true
-      - name: view pruduction result
-        if: github.ref == 'refs/heads/master'
-        env:
-          result: ${{steps.deploy.outputs.result}}
-        run: echo $result
-      - name: view staging result
-        if: github.ref == 'refs/heads/staging'
-        env:
-          result: ${{steps.deploy-staging.outputs.result}}
-        run: echo $result
+          soracom_soralet_code_srn: ${{ steps.upload.outputs.soralet_srn }}
+          soracom_soralet_direction: uplink
+          soracom_group_id: ${{ secrets.SORACOM_GROUP_ID_PROD }}
+          soracom_soralet_enabled: true
