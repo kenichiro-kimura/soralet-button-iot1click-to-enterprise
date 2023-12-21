@@ -70,7 +70,6 @@
   },
   "dependencies": {
     "assemblyscript-json": "^1.1.0",
-    "dayjs": "^1.11.10",
     "orbit-sdk-assemblyscript": "file:../orbit-sdk-assemblyscript"
   },
   "devDependencies": {

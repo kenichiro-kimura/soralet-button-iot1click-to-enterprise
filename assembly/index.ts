@@ -10,7 +10,7 @@ import {
 } from "orbit-sdk-assemblyscript";
 
 import { JSON, JSONEncoder } from "assemblyscript-json";
-import dayjs from "dayjs";
+
 /**
  * process uplink (device -> SORACOM) message
  */
@@ -71,7 +71,7 @@ export function uplink(): i32 {
   encoder.pushObject("deviceEvent");
   encoder.pushObject("buttonClicked");
   encoder.setString("clickType",clickTypeName_string);
-  encoder.setString("reportedTime",dayjs().toISOString());
+  encoder.setString("reportedTime",(new Date(getTimestamp())).toISOString());
   encoder.popObject();
 
   encoder.pushObject("placementInfo");
