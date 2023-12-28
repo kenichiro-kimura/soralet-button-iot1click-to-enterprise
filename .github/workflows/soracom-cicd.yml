@@ -20,7 +20,7 @@ jobs:
         with:
           fetch-depth: 0
           repository: soracom/orbit-sdk-assemblyscript
-          path: ../
+          path: orbit-sdk-assemblyscript
       - name: initialize
         run: npm run init
       - name: copy libs
