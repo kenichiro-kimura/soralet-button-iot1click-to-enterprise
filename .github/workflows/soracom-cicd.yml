@@ -23,8 +23,6 @@ jobs:
           path: orbit-sdk-assemblyscript
       - name: initialize
         run: npm run init
-      - name: copy libs
-        run: cp -r /workspaces/orbit-sdk-assemblyscript ../
       - name: build optimized
         run: npm run build:optimized
       - name: upload assets
