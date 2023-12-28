@@ -15,12 +15,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          repository: soracom/orbit-sdk-assemblyscript
-          path: ../orbit-sdk-assemblyscript
+      - name: clone orbit-sdk-assemblyscript
+        run: git clone https://github.com/soracom/orbit-sdk-assemblyscript.git ../orbit-sdk-assemblyscript
       - name: initialize
         run: npm run init
       - name: build optimized
