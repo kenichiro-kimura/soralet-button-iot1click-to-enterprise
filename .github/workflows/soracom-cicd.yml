@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          repository: https://github.com/soracom/orbit-sdk-assemblyscript
+          repository: soracom/orbit-sdk-assemblyscript
       - name: initialize
         run: npm run init
       - name: copy libs
